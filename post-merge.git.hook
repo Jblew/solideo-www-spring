@@ -8,3 +8,8 @@ echo "=====POST-MERGE====="
 echo ""
 
 "$DIR/../../build-deploy-notify.sh"
+
+##
+# Crontab example:
+#
+# */1 * * * * su -s /bin/bash ubuntu -c 'cd /home/ubuntu/solideo-www-spring && /usr/bin/git pull origin master'
