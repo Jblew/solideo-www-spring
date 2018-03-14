@@ -6,6 +6,7 @@ echo "Usage: $0 [build] [start|stop|restart]"
 
 SOLIDEO_RUN_OPTS=""
 export SD_GRADLE_OPTIONS=""
+export SD_GRADLE_TASKS=""
 
 sd_build="false"
 sd_start="false"
@@ -48,7 +49,11 @@ while test -n "$1"; do
       shift
       ;;
    --scan|-s)
-      sd_build_scan="true"
+      export SD_GRADLE_OPTIONS="$SD_GRADLE_OPTIONS --scan"
+      shift
+      ;;
+   --security|-r)
+      export SD_GRADLE_TASKS="dependencyCheckUpdate dependencyCheckAnalyze"
       shift
       ;;
    *) 
@@ -59,10 +64,6 @@ done
 
 if [ "$sd_daemon" == "true" ]; then
   SOLIDEO_RUN_OPTS="-d"
-fi
-
-if [ "$sd_build_scan" == "true" ]; then
-  export SD_GRADLE_OPTIONS="--scan"
 fi
 
 if [ "$sd_build" == "true" ]; then

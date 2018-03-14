@@ -6,6 +6,8 @@ plugins {
     id 'java'
     id 'application'
     
+    id "net.idlestate.gradle-duplicate-classes-check" version "1.0.2"
+    id "org.owasp.dependencycheck" version "3.1.1"
     id 'org.springframework.boot' version '2.0.0.RELEASE'
 }
 
@@ -60,10 +62,6 @@ dependencies {
  */
 distZip.enabled = false
 bootDistZip.enabled = false
-
-task('set777PermissionsForDistributions') {
-    
-}
 
 jar {
     mainClassName = project.mainClassName
